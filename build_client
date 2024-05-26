@@ -1,0 +1,19 @@
+#!/bin/bash
+
+mkdir Client/build
+cd Client/build;
+
+cmake -DCMAKE_BUILD_TYPE=$1 ..
+
+cmake --build .
+
+cd ../../
+
+touch client_exec
+
+chmod +x ./client_exec
+
+cat > client_exec << EOF
+#!/bin/bash
+./Client/build/Client_$1 \$1 \$2 \$3
+EOF

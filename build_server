@@ -1,0 +1,19 @@
+#!/bin/bash
+
+mkdir Server/build
+cd Server/build;
+
+cmake -DCMAKE_BUILD_TYPE=$1 ..
+
+cmake --build .
+
+cd ../../
+
+touch server_exec
+
+chmod +x ./server_exec
+
+cat > server_exec << EOF
+#!/bin/bash
+./Server/build/Server_$1 \$1
+EOF
