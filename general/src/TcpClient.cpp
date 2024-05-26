@@ -12,7 +12,7 @@ std::string general::TcpClient::CreateMessage() const
 
     std::ostringstream oss;
 
-    oss << std::put_time(&tm, "[%d-%m-%Y %H-%M-%S-%MS]");
+    oss << std::put_time(&tm, "[%Y-%m-%d %H:%M:%S.%MS]");
     oss << " " << m_Configuration.m_Name;
 
     return oss.str();
